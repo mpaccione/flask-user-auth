@@ -37,8 +37,14 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-      const result = await response.json();
-      alert(result.message || result.error);
+    
+      if (response.status === 302) {
+        window.location.href = response.url // redirect
+      } else if (response.ok) {
+        window.location.href = '/dashboard' // redirect
+      } else {
+        console.log({ response })
+      }
     }
 
     async function login() {
@@ -50,12 +56,13 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
-      const result = await response.json();
-      if (response.ok) {
-        alert('Login successful! Token: ' + result.token);
-        // window.location.pushState({}, 'Dashboard', '/dashboard')
+      
+      if (response.status === 302) {
+        window.location.href = response.url // redirect
+      } else if (response.ok) {
+        window.location.href = '/dashboard' // redirect
       } else {
-        alert(result.error);
+        console.log({ response })
       }
     }
   </script>

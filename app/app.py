@@ -40,7 +40,6 @@ headers = {
     # 'x-stack-access-token': os.getenv("NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY"),
 }
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -51,8 +50,6 @@ def dashboard():
     return render_template('dashboard.html')
 
 #
-
-
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.get_json()
