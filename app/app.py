@@ -137,14 +137,14 @@ def login():
         return jsonify({'error': 'Invalid credentials'}), 401
 
 
-@app.route('/user/<int:user_id>', methods=['GET'])
-def get_user(user_id):
-    user = User.query.get(user_id)
+# @app.route('/user/<int:user_id>', methods=['GET'])
+# def get_user(user_id):
+#     user = User.query.get(user_id)
 
-    if user:
-        return jsonify({'id': user.id, 'username': user.username, 'email': user.email}), 200
-    else:
-        return jsonify({'error': 'User not found'}), 404
+#     if user:
+#         return jsonify({'id': user.id, 'username': user.username, 'email': user.email}), 200
+#     else:
+#         return jsonify({'error': 'User not found'}), 404
 
 
 if __name__ == '__main__':
